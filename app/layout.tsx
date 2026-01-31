@@ -24,6 +24,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Year End Party 2025 - Invitation",
   description: "Join us for an unforgettable celebration!",
+  icons: {
+    icon: "/FPTU.jpg",
+  },
 };
 
 export default function RootLayout({

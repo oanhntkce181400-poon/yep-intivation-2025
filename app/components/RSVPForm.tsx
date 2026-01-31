@@ -17,9 +17,6 @@ export default function RSVPForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // URL Google Apps Script
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzou48rL9iDBs56vqjMBsHEV77GfrfLjhMksyksbJIKEJMw443k71S7_bZcLttnh2CN/exec';
-    
     const attendanceText = formData.attendance === "yes" ? "Có" : formData.attendance === "no" ? "Không" : "Chưa chắc";
     const guestsText = formData.guests === "alone" ? "1 người" : formData.guests === "plus1" ? "2 người" : formData.guests === "plus2" ? "3 người" : formData.guests === "plus3" ? "4+ người" : "";
     
@@ -35,45 +32,40 @@ export default function RSVPForm() {
     console.log('📝 Đang gửi dữ liệu:', submitData);
     
     try {
-      // Gửi trực tiếp đến Google Apps Script bằng fetch với no-cors
-      await fetch(GOOGLE_SCRIPT_URL, {
+      // Gọi API route thay vì trực tiếp đến Google Script
+      const response = await fetch('/api/submit-rsvp', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(submitData),
       });
       
-      console.log("✅ Đã gửi dữ liệu lên Google Sheets");
-      setSubmitted(true);
+      const result = await response.json();
       
-      // Hiển thị thông báo 5 giây rồi reset form
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({
-          name: "",
-          message: "",
-          attendance: "",
-          guests: "",
-          dietary: "",
-        });
-      }, 5000);
+      if (result.success) {
+        console.log("✅ Đã gửi dữ liệu lên Google Sheets");
+        setSubmitted(true);
+        
+        // Hiển thị thông báo 5 giây rồi reset form
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({
+            name: "",
+            message: "",
+            attendance: "",
+            guests: "",
+            dietary: "",
+          });
+        }, 5000);
+      } else {
+        console.error('❌ Server trả về lỗi:', result.error);
+        alert(t.errorMessage || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
+      }
       
     } catch (error) {
       console.error('❌ Lỗi khi gửi:', error);
-      // Vẫn hiển thị thành công vì với no-cors không biết được kết quả
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({
-          name: "",
-          message: "",
-          attendance: "",
-          guests: "",
-          dietary: "",
-        });
-      }, 5000);
+      alert(t.errorMessage || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
     }
   };
 

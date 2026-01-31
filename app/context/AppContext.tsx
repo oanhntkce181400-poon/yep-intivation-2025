@@ -76,6 +76,7 @@ export const translations = {
     shareButton: "Chia sẻ lên Facebook",
     successTitle: "Cảm ơn bạn!",
     successMessage: "Chúng tôi đã nhận được phản hồi của bạn.",
+    errorMessage: "Có lỗi xảy ra. Vui lòng thử lại sau.",
     shareMessage: "Tôi sẽ tham dự Year End Party 2025 - FPT Software & FPTU! Cùng nhau đón chào năm mới thật vui vẻ nhé!",
     
     // Map Section
@@ -154,6 +155,7 @@ export const translations = {
     shareButton: "Share on Facebook",
     successTitle: "Thank You!",
     successMessage: "We have received your response.",
+    errorMessage: "An error occurred. Please try again later.",
     shareMessage: "I will attend Year End Party 2025 - FPT Software & FPTU! Let's welcome the new year together!",
     
     // Map Section
@@ -232,6 +234,7 @@ export const translations = {
     shareButton: "Facebookでシェア",
     successTitle: "ありがとうございます！",
     successMessage: "ご回答を受け取りました。",
+    errorMessage: "エラーが発生しました。後でもう一度お試しください。",
     shareMessage: "Year End Party 2025 - FPT Software & FPTUに参加します！一緒に新年を迎えましょう！",
     
     // Map Section
