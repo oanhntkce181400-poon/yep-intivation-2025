@@ -48,18 +48,32 @@ export default function RSVPForm() {
       console.log("✅ Đã gửi dữ liệu lên Google Sheets");
       setSubmitted(true);
       
-      // Reload page sau 2 giây
+      // Hiển thị thông báo 5 giây rồi reset form
       setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+        setSubmitted(false);
+        setFormData({
+          name: "",
+          message: "",
+          attendance: "",
+          guests: "",
+          dietary: "",
+        });
+      }, 5000);
       
     } catch (error) {
       console.error('❌ Lỗi khi gửi:', error);
       // Vẫn hiển thị thành công vì với no-cors không biết được kết quả
       setSubmitted(true);
       setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+        setSubmitted(false);
+        setFormData({
+          name: "",
+          message: "",
+          attendance: "",
+          guests: "",
+          dietary: "",
+        });
+      }, 5000);
     }
   };
 
