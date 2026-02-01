@@ -3,6 +3,7 @@
 import Countdown from "./components/Countdown";
 import RSVPForm from "./components/RSVPForm";
 import Header from "./components/Header";
+import Fireworks from "./components/Fireworks";
 import { useEffect, useState } from "react";
 import { useApp } from "./context/AppContext";
 
@@ -16,8 +17,23 @@ export default function Home() {
 
   return (
     <>
+      <Fireworks />
       <Header />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300 pt-16">
+      
+      {/* Video Banner */}
+      <div className="relative w-full overflow-hidden mt-16">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-[350px] md:h-[450px] lg:h-[550px] object-cover"
+        >
+          <source src="/navbar.mp4" type="video/mp4" />
+        </video>
+      </div>
+      
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300">
         {/* Hero Section */}
         <section
           className={`min-h-screen flex flex-col items-center justify-center px-4 py-16 md:py-20 transition-opacity duration-1000 ${
@@ -25,13 +41,6 @@ export default function Home() {
           }`}
         >
           <div className="text-center max-w-4xl">
-            {/* Decorative Top */}
-            <div className="mb-8 animate-fadeInDown">
-              <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6">
-                {/* FPT Logo Placeholder */}
-              </div>
-            </div>
-
             {/* Main Title */}
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-gray-800 dark:text-gray-100 mb-6 md:mb-8 tracking-wider animate-fadeInUp">
               {t.heroTitle}
