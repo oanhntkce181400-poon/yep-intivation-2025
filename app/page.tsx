@@ -4,6 +4,7 @@ import Countdown from "./components/Countdown";
 import RSVPForm from "./components/RSVPForm";
 import Header from "./components/Header";
 import Fireworks from "./components/Fireworks";
+import VideoHero from "./components/VideoHero";
 import { useEffect, useState } from "react";
 import { useApp } from "./context/AppContext";
 
@@ -21,22 +22,14 @@ export default function Home() {
       <Header />
       
       {/* Video Banner */}
-      <div className="relative w-full overflow-hidden mt-16">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-[350px] md:h-[450px] lg:h-[550px] object-cover"
-        >
-          <source src="/navbar.mp4" type="video/mp4" />
-        </video>
+      <div className="mt-16">
+        <VideoHero />
       </div>
       
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300">
         {/* Hero Section */}
         <section
-          className={`min-h-screen flex flex-col items-center justify-center px-4 py-16 md:py-20 transition-opacity duration-1000 ${
+          className={`min-h-screen flex flex-col items-center justify-center px-4 py-2 md:py-20 transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
