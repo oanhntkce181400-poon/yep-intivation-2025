@@ -255,7 +255,7 @@ export const translations = {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("vi");
+  const [language, setLanguageState] = useState<Language>("ja");
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
